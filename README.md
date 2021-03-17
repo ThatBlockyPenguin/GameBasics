@@ -1,0 +1,2 @@
+# GameBasics
+Library for LibGDX!
