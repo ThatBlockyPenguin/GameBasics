@@ -1,4 +1,6 @@
-package com.blockypenguin.gamebasicslib;
+package com.blockypenguin.gamebasicslib.events;
+
+import com.blockypenguin.gamebasicslib.base.GameBase;
 
 public class Events {
 	public static void sendEvent(GameBase game, EventType type, String... data) {

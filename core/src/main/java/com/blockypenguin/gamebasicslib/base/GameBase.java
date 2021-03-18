@@ -1,4 +1,4 @@
-package com.blockypenguin.gamebasicslib;
+package com.blockypenguin.gamebasicslib.base;
 
 import java.util.Optional;
 import java.util.Random;

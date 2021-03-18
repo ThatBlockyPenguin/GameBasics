@@ -1,4 +1,4 @@
-package com.blockypenguin.gamebasicslib;
+package com.blockypenguin.gamebasicslib.multiples;
 
 public class Quadruple<T1, T2, T3, T4> {
 	

@@ -1,4 +1,4 @@
-package com.blockypenguin.gamebasicslib;
+package com.blockypenguin.gamebasicslib.multiples;
 
 public class Tuple<T1, T2> {
 	
