@@ -1,0 +1,23 @@
+apply plugin: 'eclipse'
+apply plugin: 'java-library'
+
+sourceCompatibility = targetCompatibility = 1.8
+
+compileJava {
+	options.incremental = true
+}
+
+version = '2.0.0'
+
+repositories {
+	mavenCentral()
+	mavenLocal()
+	gradlePluginPortal()
+	maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
+	maven { url 'https://jitpack.io' }
+	maven { url 'https://s01.oss.sonatype.org' }
+}
+
+dependencies {
+	api "com.badlogicgames.gdx:gdx:1.10.0"
+}
