@@ -22,3 +22,11 @@ repositories {
 dependencies {
 	implementation "com.badlogicgames.gdx:gdx:1.10.0"
 }
+
+publishing {
+	publications {
+		mavenJava(MavenPublication) {
+			from components.java
+		}
+	}
+}
