@@ -1,17 +1,14 @@
-plugins {
-	id 'eclipse'
-	id 'java-library'
-	id 'maven-publish'
-}
+apply plugin: 'maven-publish'
+apply plugin: 'eclipse'
+apply plugin: 'java-library'
 
 group = 'com.github.ThatBlockyPenguin'
 sourceCompatibility = targetCompatibility = 1.8
+version = '2.2.0'
 
 compileJava {
 	options.incremental = true
 }
-
-version = '2.2.0'
 
 repositories {
 	mavenCentral()
@@ -23,13 +20,5 @@ repositories {
 }
 
 dependencies {
-	api "com.badlogicgames.gdx:gdx:1.10.0"
-}
-
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            artifactId = 'GameBasics'
-        }
-    }
+	implementation "com.badlogicgames.gdx:gdx:1.10.0"
 }
