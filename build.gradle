@@ -25,3 +25,11 @@ repositories {
 dependencies {
 	api "com.badlogicgames.gdx:gdx:1.10.0"
 }
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifactId = 'GameBasics'
+        }
+    }
+}
