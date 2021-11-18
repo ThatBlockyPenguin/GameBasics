@@ -1,6 +1,8 @@
-apply plugin: 'eclipse'
-apply plugin: 'java'
-apply plugin: 'maven-publish'
+plugins {
+	id 'eclipse'
+	id 'java-library'
+	id 'maven-publish'
+}
 
 group = 'com.github.ThatBlockyPenguin'
 sourceCompatibility = targetCompatibility = 1.8
