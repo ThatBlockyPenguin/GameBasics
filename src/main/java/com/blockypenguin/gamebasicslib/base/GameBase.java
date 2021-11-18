@@ -6,6 +6,7 @@ import java.util.Random;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.utils.Null;
 import com.badlogic.gdx.utils.ScreenUtils;
 
 public abstract class GameBase extends ApplicationAdapter {
@@ -93,6 +94,10 @@ public abstract class GameBase extends ApplicationAdapter {
 		this.clearColour = clearColour;
 	}
 	
+	/**
+	 * @return The current instance, or null if none exists.
+	 */
+	@Null
 	public static GameBase getInstance() {
 		return instance;
 	}

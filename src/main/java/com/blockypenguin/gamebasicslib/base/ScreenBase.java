@@ -5,13 +5,26 @@ import com.badlogic.gdx.Screen;
 public abstract class ScreenBase implements Screen {
 	
 	protected final GameBase instance;
+	private boolean isInit;
 	
 	public ScreenBase(GameBase instance) {
 		this.instance = instance;
+		this.isInit = false;
 	}
 	
+	/**
+	 * super.show() calls create() on first show
+	 */
 	@Override
-	public void show() {}
+	public void show() {
+		if(!isInit) {
+			create();
+			isInit = true;
+		}
+	}
+	
+	
+	public void create() {}
 	
 	public void preRender(float delta) {}
 
