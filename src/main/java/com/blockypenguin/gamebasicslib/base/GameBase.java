@@ -26,7 +26,7 @@ public abstract class GameBase extends ApplicationAdapter {
 		float delta = Gdx.graphics.getDeltaTime();
 		
 		preRender(delta);
-		screen.ifPresent(s -> s.render(Gdx.graphics.getDeltaTime()));
+		screen.ifPresent(s -> s.render(delta));
 		postRender(delta);
 	}
 	
