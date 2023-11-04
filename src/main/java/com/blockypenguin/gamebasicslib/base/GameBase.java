@@ -10,8 +10,6 @@ import java.util.Optional;
 import java.util.Random;
 
 public abstract class GameBase extends ApplicationAdapter {
-	public final Random random;
-	
 	protected Optional<ScreenBase> screen;
 	private static GameBase instance;
 	
@@ -19,7 +17,6 @@ public abstract class GameBase extends ApplicationAdapter {
 
 	protected GameBase() {
 		instance = this;
-		random = new Random();
 		screen = Optional.empty();
 	}
 
