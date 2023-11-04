@@ -1,31 +1,26 @@
 package com.blockypenguin.gamebasicslib.base;
 
-import java.util.Optional;
-import java.util.Random;
-
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.utils.Null;
 import com.badlogic.gdx.utils.ScreenUtils;
 
+import java.util.Optional;
+import java.util.Random;
+
 public abstract class GameBase extends ApplicationAdapter {
 	public final Random random;
 	
 	protected Optional<ScreenBase> screen;
-	public final int minWidth;
-	public final int minHeight;
 	private static GameBase instance;
 	
 	protected Color clearColour = Color.BLACK;
 
-	protected GameBase(int minWidth, int minHeight) {
+	protected GameBase() {
 		instance = this;
 		random = new Random();
 		screen = Optional.empty();
-		
-		this.minWidth = minWidth;
-		this.minHeight = minHeight;
 	}
 
 	@Override
@@ -39,35 +34,25 @@ public abstract class GameBase extends ApplicationAdapter {
 	}
 	
 	@Override
-	public void resize(int width, int height) {
-		if(width < minWidth) width = minWidth;
-		if(height < minHeight) height = minHeight;
-		
-		Gdx.graphics.setWindowedMode(width, height);
-		if(screen.isPresent()) screen.get().resize(width, height);
-	}
+	public void resize(int width, int height) { screen.ifPresent(s ->  s.resize(width, height)); }
 
 	@Override
-	public void pause() {
-		screen.ifPresent(s -> s.pause());
-	}
+	public void pause() { screen.ifPresent(ScreenBase::pause); }
 
 	@Override
-	public void resume() {
-		screen.ifPresent(s -> s.resume());
-	}
+	public void resume() { screen.ifPresent(ScreenBase::resume); }
 	
 	@Override
-	public void dispose() {
-		screen.ifPresent(s -> s.hide());
-	}
+	public void dispose() { screen.ifPresent(ScreenBase::hide); }
 
 
-	/** Sets the current screen. {@link ScreenBase#hide()} is called on any old screen,
+	/**
+	 * Sets the current screen. {@link ScreenBase#hide()} is called on any old screen,
 	 * and {@link ScreenBase#show()} is called on the new screen, if any.
-	 * @param screen may be {@code null} */
+	 * @param screen may be {@code null}
+	 */
 	public void setScreen(ScreenBase screen) {
-		this.screen.ifPresent(s -> s.hide());
+		this.screen.ifPresent(ScreenBase::hide);
 		
 		this.screen = Optional.of(screen);
 		
@@ -78,29 +63,18 @@ public abstract class GameBase extends ApplicationAdapter {
 	}
 
 	/** @return the currently active {@link ScreenBase}. */
-	public Optional<ScreenBase> getScreen() {
-		return screen;
-	}
+	public Optional<ScreenBase> getScreen() { return screen; }
 	
-	public void preRender(float delta) {
-		screen.ifPresent(s -> s.preRender(delta));
-	}
+	public void preRender(float delta) { screen.ifPresent(s -> s.preRender(delta)); }
+	public void postRender(float delta) { screen.ifPresent(s -> s.postRender(delta)); }
 	
-	public void postRender(float delta) {
-		screen.ifPresent(s -> s.postRender(delta));
-	}
-	
-	public void setClearColour(Color clearColour) {
-		this.clearColour = clearColour;
-	}
+	public void setClearColour(Color clearColour) { this.clearColour = clearColour; }
 	
 	/**
 	 * @return The current instance, or null if none exists.
 	 */
 	@Null
-	public static GameBase getInstance() {
-		return instance;
-	}
+	public static GameBase getInstance() { return instance; }
 	
-	public void receiveEvent(String... data) {};
+	public void receiveEvent(String... data) {}
 }

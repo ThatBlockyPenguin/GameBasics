@@ -43,12 +43,10 @@ public abstract class ScreenBase implements Screen {
 	public void resume() {}
 	
 	/**
-	 * super.hide() calls dispose()
+	 * Calls dispose() unless overridden
 	 */
 	@Override
-	public void hide() {
-		dispose();
-	}
+	public void hide() { dispose(); }
 
 	@Override
 	public void dispose() {}

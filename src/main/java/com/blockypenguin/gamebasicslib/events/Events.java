@@ -12,7 +12,7 @@ public class Events {
 		}
 	}
 	
-	public static enum EventType {
+	public enum EventType {
 		SCREEN,
 		GAME,
 		BOTH
